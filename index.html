@@ -212,6 +212,9 @@
     .icon-sky    { background: linear-gradient(135deg, #0284c7, #0c4a6e); box-shadow: 0 4px 14px rgba(2,132,199,0.3); }
     .icon-amber  { background: linear-gradient(135deg, #d97706, #78350f); box-shadow: 0 4px 14px rgba(217,119,6,0.3); }
     .icon-emerald{ background: linear-gradient(135deg, #059669, #064e3b); box-shadow: 0 4px 14px rgba(5,150,105,0.3); }
+    /* Real logo icons — no gradient, no font-size needed */
+    .icon-logo { background: none; box-shadow: none; padding: 0; overflow: hidden; }
+    .icon-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 14px; display: block; }
 
     /* ── Card body ── */
     .card-body { flex: 1; min-width: 0; }
@@ -338,7 +341,7 @@
   <div class="grid">
 
     <div class="card">
-      <div class="app-icon icon-purple">🎧</div>
+      <div class="app-icon icon-logo"><img src="assets/noxreach.svg" alt="NoxReach"></div>
       <div class="card-body">
         <div class="card-top">
           <div class="card-name">NoxReach</div>
@@ -362,7 +365,7 @@
     </div>
 
     <div class="card">
-      <div class="app-icon icon-cyan">✈</div>
+      <div class="app-icon icon-logo"><img src="assets/standby-radar.png" alt="Standby Radar"></div>
       <div class="card-body">
         <div class="card-top">
           <div class="card-name">Standby Radar</div>
@@ -386,7 +389,7 @@
     </div>
 
     <div class="card">
-      <div class="app-icon icon-pink">G</div>
+      <div class="app-icon icon-logo"><img src="assets/geez.png" alt="Sound of GEEZ"></div>
       <div class="card-body">
         <div class="card-top">
           <div class="card-name">Sound of GEEZ</div>
@@ -410,7 +413,7 @@
     </div>
 
     <div class="card">
-      <div class="app-icon icon-teal">✦</div>
+      <div class="app-icon icon-logo"><img src="assets/noxreach-prompt-gen.svg" alt="NoxReach Prompt Generator"></div>
       <div class="card-body">
         <div class="card-top">
           <div class="card-name">NoxReach Prompt Generator</div>
@@ -440,7 +443,7 @@
   <div class="grid">
 
     <div class="card">
-      <div class="app-icon icon-orange">📅</div>
+      <div class="app-icon icon-logo"><img src="assets/noxreach-scheduler.svg" alt="NoxReach Scheduler"></div>
       <div class="card-body">
         <div class="card-top">
           <div class="card-name">NoxReach Scheduler</div>
@@ -464,7 +467,7 @@
     </div>
 
     <div class="card">
-      <div class="app-icon icon-indigo">🎬</div>
+      <div class="app-icon icon-logo"><img src="assets/noxreach-motion.svg" alt="NoxReach Motion"></div>
       <div class="card-body">
         <div class="card-top">
           <div class="card-name">NoxReach Motion</div>
