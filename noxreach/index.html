@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NoxReach Roadmap</title>
+<style>
+  :root {
+    --bg:        #0a0a0a;
+    --surface:   #111111;
+    --surface2:  #18181b;
+    --border:    rgba(255,255,255,0.07);
+    --border-h:  rgba(255,255,255,0.14);
+    --text:      #ffffff;
+    --text2:     #a1a1aa;
+    --text3:     #52525b;
+    --purple:    #7c3aed;
+    --purple-bg: rgba(124,58,237,0.12);
+    --purple-bd: rgba(124,58,237,0.30);
+    --cyan:      #22d3ee;
+    --cyan-bg:   rgba(34,211,238,0.10);
+    --cyan-bd:   rgba(34,211,238,0.25);
+    --green:     #4ade80;
+    --green-bg:  rgba(74,222,128,0.10);
+    --green-bd:  rgba(74,222,128,0.25);
+    --red:       #ef4444;
+    --red-bg:    rgba(239,68,68,0.10);
+    --red-bd:    rgba(239,68,68,0.25);
+    --orange:    #f97316;
+    --orange-bg: rgba(249,115,22,0.10);
+    --orange-bd: rgba(249,115,22,0.25);
+    --grad:      linear-gradient(135deg, #7c3aed, #22d3ee);
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:14px; line-height:1.6; min-height:100vh; }
+
+  .header { padding:32px 32px 0; display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+  .wordmark { font-size:11px; font-weight:700; letter-spacing:.14em; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:4px; }
+  .title { font-size:1.6rem; font-weight:800; color:var(--text); }
+  .subtitle { font-size:12px; color:var(--text3); margin-top:4px; }
+  .header-meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:6px; }
+  .meta-pill { font-size:11px; padding:4px 10px; border-radius:20px; font-weight:600; }
+  .pill-security { background:var(--red-bg); color:var(--red); border:1px solid var(--red-bd); }
+  .pill-features { background:var(--purple-bg); color:#c4b5fd; border:1px solid var(--purple-bd); }
+  .pill-done { background:var(--green-bg); color:var(--green); border:1px solid var(--green-bd); }
+
+  .board { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:24px 32px 40px; }
+  @media(max-width:900px) { .board { grid-template-columns:1fr; } }
+
+  .col-header { display:flex; align-items:center; gap:8px; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+  .col-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .dot-todo { background:var(--text3); }
+  .dot-prog { background:var(--cyan); box-shadow:0 0 8px rgba(34,211,238,0.5); }
+  .dot-done { background:var(--green); }
+  .col-title { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text2); }
+  .col-count { font-size:11px; color:var(--text3); margin-left:auto; background:var(--surface2); padding:2px 8px; border-radius:20px; }
+
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px 16px; margin-bottom:10px; transition:border-color .15s, transform .15s; }
+  .card:hover { border-color:var(--border-h); transform:translateY(-1px); }
+  .card-tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; }
+  .tag { font-size:10px; font-weight:700; padding:2px 7px; border-radius:20px; }
+  .tag-security { background:var(--red-bg); color:var(--red); border:1px solid var(--red-bd); }
+  .tag-feature  { background:var(--purple-bg); color:#c4b5fd; border:1px solid var(--purple-bd); }
+  .tag-quick    { background:var(--orange-bg); color:var(--orange); border:1px solid var(--orange-bd); }
+  .tag-done     { background:var(--green-bg); color:var(--green); border:1px solid var(--green-bd); }
+  .card-title { font-size:13px; font-weight:600; color:var(--text); margin-bottom:4px; }
+  .card-title a { color:inherit; text-decoration:none; transition:color .15s; }
+  .card-title a:hover { color:var(--cyan); }
+  .card-desc { font-size:12px; color:var(--text2); line-height:1.5; }
+  .card-desc ul { padding-left:14px; margin-top:4px; }
+  .card-desc li { margin:2px 0; }
+  .card-footer { margin-top:10px; padding-top:10px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+  .card-effort { font-size:10px; color:var(--orange); font-weight:700; }
+  .gh-link { font-size:10px; color:var(--text3); text-decoration:none; display:inline-flex; align-items:center; gap:4px; transition:color .15s; }
+  .gh-link:hover { color:var(--cyan); }
+  code { font-size:11px; font-family:"SF Mono",Menlo,monospace; background:var(--surface2); border:1px solid var(--border); border-radius:3px; padding:1px 4px; color:#c4b5fd; }
+  .col-section-label { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text3); margin:16px 0 8px; }
+  .done-item { display:flex; align-items:flex-start; gap:8px; font-size:12px; color:var(--text2); padding:6px 0; border-bottom:1px solid var(--border); }
+  .done-item:last-child { border-bottom:none; }
+  .done-check { width:14px; height:14px; border-radius:50%; background:var(--green-bg); border:1px solid var(--green-bd); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+  .done-check svg { width:8px; height:8px; stroke:var(--green); fill:none; stroke-width:2.5; }
+  .empty-col { padding:40px 0; text-align:center; color:var(--text3); font-size:12px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="wordmark">NIGHTLIFE OS</div>
+    <div class="title">Roadmap</div>
+    <div class="subtitle">app.noxreach.com · Updated 2026-05-23</div>
+    <div class="header-meta">
+      <span class="meta-pill pill-security">2 Security</span>
+      <span class="meta-pill pill-features">5 Features</span>
+      <span class="meta-pill pill-done">8 Shipped</span>
+    </div>
+  </div>
+</div>
+
+<div class="board">
+
+  <!-- BACKLOG -->
+  <div class="col">
+    <div class="col-header">
+      <div class="col-dot dot-todo"></div>
+      <div class="col-title">Backlog</div>
+      <div class="col-count">7</div>
+    </div>
+
+    <div class="col-section-label">🔒 Security</div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-security">Security</span></div>
+      <div class="card-title">Move Supabase keys to env vars</div>
+      <div class="card-desc">
+        <code>supabaseClient.js</code> has hardcoded URL + anon key. Repo private so contained — still needs cleanup.
+        <ul>
+          <li>Move to <code>VITE_SUPABASE_URL</code> + <code>VITE_SUPABASE_ANON</code></li>
+          <li>Add <code>.env.local</code> to <code>.gitignore</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-security">Security</span></div>
+      <div class="card-title">email_events — RLS on, no policies</div>
+      <div class="card-desc">RLS enabled but zero policies = deny all reads/writes. Verify if table is used; add policies or disable RLS.</div>
+    </div>
+
+    <div class="col-section-label">⚡ Features</div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-quick">Quick Win · ~2hrs</span></div>
+      <div class="card-title">Static landing page (noxreach.com)</div>
+      <div class="card-desc">
+        Decouple <code>landing.html</code> from React. Mobile LCP 9s+ → target 80+ PageSpeed.
+        <ul>
+          <li><code>landing.html</code> exists and is optimised</li>
+          <li>Vercel rewrite: noxreach.com → landing, app.noxreach.com → app</li>
+          <li>Fix image paths post-Vite copy</li>
+        </ul>
+      </div>
+      <div class="card-footer"><span class="card-effort">~2 hrs · nothing blocking</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-feature">Feature</span></div>
+      <div class="card-title">Sliding wall lead panel</div>
+      <div class="card-desc">
+        Lead detail at ~65% width, pipeline compresses to ~35%.
+        <ul>
+          <li>Desktop: transition, shadow, compression</li>
+          <li>Mobile: full takeover + back button</li>
+          <li>Edge cases: long notes, compose open, AI draft open</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-feature">Feature</span></div>
+      <div class="card-title">Connectors page</div>
+      <div class="card-desc">
+        Dedicated integrations hub via "Connectors →" in Settings.
+        <ul>
+          <li>Resend, SMTP, Gmail, Outlook — moved from Settings</li>
+          <li>Coming soon: Instagram enrichment, Composio</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-feature">Feature</span></div>
+      <div class="card-title">Instagram lead enrichment</div>
+      <div class="card-desc">Auto-fetch follower count, bio, account category when handle added to lead. Tier badge on pipeline card.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-feature">Feature</span></div>
+      <div class="card-title">Multi-channel outreach via Composio</div>
+      <div class="card-desc">
+        Instagram + LinkedIn DMs from lead panel.
+        <ul>
+          <li>Same compose flow as email, logged in email_sends</li>
+          <li>Composio account + OAuth per user required</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- IN PROGRESS -->
+  <div class="col">
+    <div class="col-header">
+      <div class="col-dot dot-prog"></div>
+      <div class="col-title">In Progress</div>
+      <div class="col-count">0</div>
+    </div>
+    <div class="empty-col">Nothing in progress yet</div>
+  </div>
+
+  <!-- DONE -->
+  <div class="col">
+    <div class="col-header">
+      <div class="col-dot dot-done"></div>
+      <div class="col-title">Done</div>
+      <div class="col-count">8</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-security">Security</span><span class="tag tag-done">2026-05-22</span></div>
+      <div class="card-title">Repos locked down</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>All repos private (NoxReach, scheduler, motion, geez)</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>Stripe secret key rotated + updated in Supabase Edge</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div><code>.gitignore</code> added to GEEZ + NoxReach repos</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-done">2026-05-20/21</span></div>
+      <div class="card-title">Outreach + Settings update</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>Outreach Channels toggles (email/IG/WhatsApp/phone)</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>AI Search Preferences (countries + genres)</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>Instagram deep-link on lead panel</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>Phone field + WhatsApp deep-link on leads</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>Admin RLS fix (recursive → security definer)</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>Privacy policy updated (Gregory Rack as controller)</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

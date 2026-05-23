@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sound of GEEZ — Roadmap</title>
+<style>
+  :root {
+    --bg:        #0f0f13;
+    --surface:   #16161c;
+    --surface2:  #1e1e28;
+    --border:    rgba(255,255,255,0.07);
+    --border-h:  rgba(255,255,255,0.16);
+    --text:      #ffffff;
+    --text2:     #a1a1aa;
+    --text3:     #52525b;
+    --gold:      #c9a227;
+    --gold-bg:   rgba(201,162,39,0.10);
+    --gold-bd:   rgba(201,162,39,0.28);
+    --purple:    #7a1fa2;
+    --purple-bg: rgba(122,31,162,0.12);
+    --purple-bd: rgba(122,31,162,0.30);
+    --green:     #4ade80;
+    --green-bg:  rgba(74,222,128,0.10);
+    --green-bd:  rgba(74,222,128,0.25);
+    --cyan:      #e0a800;
+    --orange:    #f97316;
+    --orange-bg: rgba(249,115,22,0.10);
+    --orange-bd: rgba(249,115,22,0.25);
+    --grad:      linear-gradient(135deg, #c9a227, #7a1fa2);
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:14px; line-height:1.6; min-height:100vh; }
+
+  .header { padding:32px 32px 0; display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+  .wordmark { font-size:11px; font-weight:700; letter-spacing:.14em; background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:4px; }
+  .title { font-size:1.6rem; font-weight:800; color:var(--text); }
+  .subtitle { font-size:12px; color:var(--text3); margin-top:4px; }
+  .header-meta { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:6px; }
+  .meta-pill { font-size:11px; padding:4px 10px; border-radius:20px; font-weight:600; }
+  .pill-features { background:var(--gold-bg); color:var(--gold); border:1px solid var(--gold-bd); }
+  .pill-done { background:var(--green-bg); color:var(--green); border:1px solid var(--green-bd); }
+
+  .board { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:24px 32px 40px; }
+  @media(max-width:900px) { .board { grid-template-columns:1fr; } }
+
+  .col-header { display:flex; align-items:center; gap:8px; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+  .col-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .dot-todo { background:var(--text3); }
+  .dot-prog { background:var(--gold); box-shadow:0 0 8px rgba(201,162,39,0.5); }
+  .dot-done { background:var(--green); }
+  .col-title { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text2); }
+  .col-count { font-size:11px; color:var(--text3); margin-left:auto; background:var(--surface2); padding:2px 8px; border-radius:20px; }
+
+  .card { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px 16px; margin-bottom:10px; transition:border-color .15s, transform .15s; }
+  .card:hover { border-color:var(--border-h); transform:translateY(-1px); }
+  .card-tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px; }
+  .tag { font-size:10px; font-weight:700; padding:2px 7px; border-radius:20px; }
+  .tag-feature  { background:var(--gold-bg); color:var(--gold); border:1px solid var(--gold-bd); }
+  .tag-quick    { background:var(--orange-bg); color:var(--orange); border:1px solid var(--orange-bd); }
+  .tag-content  { background:var(--purple-bg); color:#d8b4fe; border:1px solid var(--purple-bd); }
+  .tag-done     { background:var(--green-bg); color:var(--green); border:1px solid var(--green-bd); }
+  .card-title { font-size:13px; font-weight:600; color:var(--text); margin-bottom:4px; }
+  .card-desc { font-size:12px; color:var(--text2); line-height:1.5; }
+  .card-desc ul { padding-left:14px; margin-top:4px; }
+  .card-desc li { margin:2px 0; }
+  .card-footer { margin-top:10px; padding-top:10px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+  .card-effort { font-size:10px; color:var(--orange); font-weight:700; }
+  code { font-size:11px; font-family:"SF Mono",Menlo,monospace; background:var(--surface2); border:1px solid var(--border); border-radius:3px; padding:1px 4px; color:#d8b4fe; }
+  .col-section-label { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text3); margin:16px 0 8px; }
+  .done-item { display:flex; align-items:flex-start; gap:8px; font-size:12px; color:var(--text2); padding:6px 0; border-bottom:1px solid var(--border); }
+  .done-item:last-child { border-bottom:none; }
+  .done-check { width:14px; height:14px; border-radius:50%; background:var(--green-bg); border:1px solid var(--green-bd); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+  .done-check svg { width:8px; height:8px; stroke:var(--green); fill:none; stroke-width:2.5; }
+  .empty-col { padding:40px 0; text-align:center; color:var(--text3); font-size:12px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="wordmark">SOUND OF GEEZ</div>
+    <div class="title">Roadmap</div>
+    <div class="subtitle">soundofgeez.com · Updated 2026-05-23</div>
+    <div class="header-meta">
+      <span class="meta-pill pill-features">4 Backlog</span>
+      <span class="meta-pill pill-done">Phase 1 Shipped</span>
+    </div>
+  </div>
+</div>
+
+<div class="board">
+
+  <!-- BACKLOG -->
+  <div class="col">
+    <div class="col-header">
+      <div class="col-dot dot-todo"></div>
+      <div class="col-title">Backlog</div>
+      <div class="col-count">4</div>
+    </div>
+
+    <div class="col-section-label">⚡ Quick Wins</div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-quick">Quick Win · ~10min</span></div>
+      <div class="card-title">Push Phase 1 to GitHub Pages</div>
+      <div class="card-desc">
+        Phase 1 committed locally (2026-05-17) but not yet deployed.
+        <ul>
+          <li>Run <code>git push</code> in <code>~/SoundofGeez.com</code></li>
+          <li>Verify live at soundofgeez.com</li>
+        </ul>
+      </div>
+      <div class="card-footer"><span class="card-effort">~10 min · nothing blocking</span></div>
+    </div>
+
+    <div class="col-section-label">🎛 Phase 2</div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-content">Content</span></div>
+      <div class="card-title">Booking enquiry flow</div>
+      <div class="card-desc">
+        Dedicated booking page with date picker, event type, budget range. Feeds into NoxReach pipeline as inbound lead.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-feature">Feature</span></div>
+      <div class="card-title">Mix / press kit page</div>
+      <div class="card-desc">
+        Downloadable EPK, embedded SoundCloud mixes, tech rider PDF. One-stop page for bookers.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-content">Content</span></div>
+      <div class="card-title">Instagram feed embed</div>
+      <div class="card-desc">Auto-updating grid of @gregorgusgeez posts. Keeps site fresh without manual updates.</div>
+    </div>
+
+  </div>
+
+  <!-- IN PROGRESS -->
+  <div class="col">
+    <div class="col-header">
+      <div class="col-dot dot-prog"></div>
+      <div class="col-title">In Progress</div>
+      <div class="col-count">0</div>
+    </div>
+    <div class="empty-col">Nothing in progress</div>
+  </div>
+
+  <!-- DONE -->
+  <div class="col">
+    <div class="col-header">
+      <div class="col-dot dot-done"></div>
+      <div class="col-title">Done</div>
+      <div class="col-count">12</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-done">Phase 1 · 2026-05-17</span></div>
+      <div class="card-title">SEO + Performance overhaul</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>SEO/OG/Twitter meta tags on all 6 pages</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>JSON-LD MusicGroup schema</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>Unique page titles per page</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>Favicon package (16/32/180/192/512px + webmanifest)</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>robots.txt, sitemap.xml, 404.html</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>IntersectionObserver lazy loading (images + iframes)</div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-done">Phase 1 · 2026-05-17</span></div>
+      <div class="card-title">UX enhancements</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>Gallery lightbox with keyboard nav (about.html)</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>AJAX contact form (Formspree) with success/error states</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>Scroll-reveal animations on cards + tour items</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>Hamburger X animation on mobile</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>Enhanced button ripple + elevation shadow</div>
+      <div class="done-item"><div class="done-check"><svg viewBox="0 0 10 10"><polyline points="2,5 4,7.5 8,3"/></svg></div>styles.css + script.js standardized to v2.0</div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>
