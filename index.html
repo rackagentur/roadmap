@@ -37,7 +37,7 @@
       --badge-live: rgba(22,163,74,0.12);
       --badge-live-text: #15803d;
       --badge-dev: rgba(202,138,4,0.15);
-      --badge-dev-text: #a16207;
+      --badge-dev-text: #854d0e;
       --badge-concept: rgba(109,40,217,0.10);
       --badge-concept-text: #7c3aed;
       --badge-tool: rgba(8,145,178,0.10);
@@ -214,6 +214,7 @@
     .icon-emerald{ background: linear-gradient(135deg, #059669, #064e3b); box-shadow: 0 4px 14px rgba(5,150,105,0.3); }
     /* Real logo icons — no gradient, no font-size needed */
     .icon-logo { background: none; box-shadow: none; padding: 0; overflow: hidden; }
+    .icon-logo-contrast { background: #111118; }
     .icon-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 14px; display: block; }
 
     /* ── Card body ── */
@@ -305,6 +306,12 @@
       border-top: 1px solid var(--border);
     }
 
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) {
+      .radar-sweep { animation: none; }
+      *, *::before, *::after { transition: none !important; }
+    }
+
     @media (max-width: 600px) {
       .page { padding: 28px 16px 60px; }
       .grid { grid-template-columns: 1fr; }
@@ -314,7 +321,7 @@
 </head>
 <body>
 
-<div class="radar-bg">
+<div class="radar-bg" aria-hidden="true">
   <svg viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice">
     <circle cx="400" cy="400" r="80"  fill="none" stroke="#176bff" stroke-width="1"/>
     <circle cx="400" cy="400" r="160" fill="none" stroke="#176bff" stroke-width="1"/>
@@ -336,17 +343,20 @@
     <div class="brand">
       <div class="brand-icon">RA</div>
       <div>
-        <div class="brand-name">Rackagentur</div>
+        <h1 class="brand-name">Rackagentur</h1>
         <div class="brand-sub">Gregory Rack &mdash; All Projects</div>
       </div>
     </div>
-    <button class="theme-btn" onclick="toggleTheme()">☀ / ☾</button>
+    <button class="theme-btn" type="button" aria-label="Switch to light theme" onclick="toggleTheme()">☀ / ☾</button>
   </header>
 
+  <main>
   <p class="audit-note">Portfolio inventory checked <span id="verified-on">—</span>. Development status and deployment health are tracked separately; unverified links are not presented as confirmed live.</p>
   <div id="portfolio" aria-live="polite">
     <p class="card-desc">Loading project registry…</p>
   </div>
+
+  </main>
 
   <footer>
     <p>Rackagentur &mdash; Gregory Rack &mdash; Cologne &mdash; 2026</p>
@@ -358,10 +368,18 @@
   function toggleTheme() {
     const html = document.documentElement;
     html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('ra-theme', html.dataset.theme);
+    updateThemeLabel();
+    try { localStorage.setItem('ra-theme', html.dataset.theme); } catch {}
   }
-  const saved = localStorage.getItem('ra-theme');
-  if (saved) document.documentElement.dataset.theme = saved;
+  function updateThemeLabel() {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.querySelector('.theme-btn').setAttribute('aria-label', 'Switch to ' + next + ' theme');
+  }
+  try {
+    const saved = localStorage.getItem('ra-theme');
+    if (saved === 'dark' || saved === 'light') document.documentElement.dataset.theme = saved;
+  } catch {}
+  updateThemeLabel();
 
   const images = {
     'NoxReach': 'assets/noxreach.svg',
@@ -392,14 +410,17 @@
     if (value !== undefined) el.textContent = value;
     return el;
   }
-  function makeLink(label, href) {
+  function makeLink(label, href, project) {
     const a = node('a', 'link-btn', label);
+    a.setAttribute('aria-label', project + ': ' + label + ' (opens in a new tab)');
     a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
     return a;
   }
   function makeCard(p) {
     const card = node('article', 'card');
     const icon = node('div', 'app-icon' + (images[p.name] ? ' icon-logo' : ''));
+    icon.setAttribute('aria-hidden', 'true');
+    if (p.name === 'Sound of GEEZ') icon.classList.add('icon-logo-contrast');
     if (images[p.name]) {
       const img = document.createElement('img');
       img.src = images[p.name]; img.alt = '';
@@ -409,7 +430,7 @@
 
     const body = node('div', 'card-body');
     const top = node('div', 'card-top');
-    top.appendChild(node('div', 'card-name', p.name));
+    top.appendChild(node('h3', 'card-name', p.name));
     const status = p.development_status || 'Unverified';
     const badgeClass = status === 'Live' || status === 'Maintenance' ? 'badge-live' :
       status === 'Development' || status === 'Testing' ? 'badge-dev' :
@@ -433,8 +454,8 @@
     body.appendChild(meta);
 
     const links = node('div', 'card-links');
-    if (p.repository) links.appendChild(makeLink('GitHub', p.repository));
-    if (p.production_url) links.appendChild(makeLink('Listed URL (unverified)', p.production_url));
+    if (p.repository) links.appendChild(makeLink('GitHub', p.repository, p.name));
+    if (p.production_url) links.appendChild(makeLink('Listed URL (unverified)', p.production_url, p.name));
     body.appendChild(links);
     card.appendChild(body);
     return card;
@@ -452,7 +473,7 @@
       for (const [label, predicate] of groups) {
         const projects = registry.projects.filter(predicate);
         if (!projects.length) continue;
-        const heading = node('div', 'section-label', label + ' · ' + projects.length);
+        const heading = node('h2', 'section-label', label + ' · ' + projects.length);
         const grid = node('div', 'grid');
         projects.forEach(project => grid.appendChild(makeCard(project)));
         container.appendChild(heading);
