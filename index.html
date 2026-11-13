@@ -289,6 +289,13 @@
     }
     .link-btn:hover { color: var(--accent); border-color: var(--accent); }
 
+    .audit-note { font-size: 12px; line-height: 1.6; color: var(--text-muted); margin: -26px 0 32px; }
+    .project-meta { font-size: 11px; color: var(--text-muted); line-height: 1.55; margin: 7px 0 11px; }
+    .project-meta strong { color: var(--text); font-weight: 600; }
+    .section-count { font-size: 11px; font-weight: 400; letter-spacing: normal; text-transform: none; }
+    .badge-unknown { background: var(--surface2); color: var(--text-muted); border: 1px solid var(--border); }
+    .audit-error { color: var(--badge-dev-text); font-size: 13px; margin-bottom: 30px; }
+
     /* ── Footer ── */
     footer {
       text-align: center;
@@ -336,202 +343,9 @@
     <button class="theme-btn" onclick="toggleTheme()">☀ / ☾</button>
   </header>
 
-  <!-- ══ LIVE ══ -->
-  <div class="section-label">Live</div>
-  <div class="grid">
-
-    <div class="card">
-      <div class="app-icon icon-logo"><img src="assets/noxreach.svg" alt="NoxReach"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="card-name">NoxReach</div>
-          <span class="badge badge-live">Live</span>
-        </div>
-        <div class="stack-tags">
-          <span class="stack-tag">React</span><span class="stack-tag">Supabase</span><span class="stack-tag">Stripe</span><span class="stack-tag">Vercel</span>
-        </div>
-        <div class="card-desc">DJ booking OS — manage gigs, bookings, contacts and contracts as an independent artist.</div>
-        <div class="card-links">
-          <a class="link-btn" href="https://app.noxreach.com" target="_blank">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            app.noxreach.com
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="app-icon icon-logo"><img src="assets/standby-radar.png" alt="Standby Radar"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="card-name">Standby Radar</div>
-          <span class="badge badge-live">Live</span>
-        </div>
-        <div class="stack-tags">
-          <span class="stack-tag">Next.js</span><span class="stack-tag">TypeScript</span><span class="stack-tag">Tailwind</span><span class="stack-tag">Vercel</span>
-        </div>
-        <div class="card-desc">Aviation crew standby call-out predictor — live flight data, risk scoring and peak call-out window.</div>
-        <div class="card-links">
-          <a class="link-btn" href="https://standby-radar.vercel.app" target="_blank">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            standby-radar.vercel.app
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="app-icon icon-logo"><img src="assets/geez.png" alt="Sound of GEEZ"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="card-name">Sound of GEEZ</div>
-          <span class="badge badge-live">Live</span>
-        </div>
-        <div class="stack-tags">
-          <span class="stack-tag">HTML</span><span class="stack-tag">CSS</span><span class="stack-tag">JavaScript</span>
-        </div>
-        <div class="card-desc">DJ portfolio &amp; booking website — mixes, press kit and booking enquiries for GEEZ.</div>
-        <div class="card-links">
-          <a class="link-btn" href="https://soundofgeez.com" target="_blank">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            soundofgeez.com
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="app-icon icon-logo"><img src="assets/noxreach-prompt-gen.svg" alt="NoxReach Prompt Generator"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="card-name">NoxReach Prompt Generator</div>
-          <span class="badge badge-tool">Tool</span>
-        </div>
-        <div class="stack-tags">
-          <span class="stack-tag">HTML</span><span class="stack-tag">Vanilla JS</span><span class="stack-tag">GitHub Pages</span>
-        </div>
-        <div class="card-desc">Generates AI image prompts for Instagram across 4 pillars — Problem, Clarity, Culture, Reel Hooks.</div>
-        <div class="card-links">
-          <a class="link-btn" href="https://noxreach-prompt-generator.vercel.app/" target="_blank">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Live Tool
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ══ IN DEVELOPMENT ══ -->
-  <div class="section-label">In Development</div>
-  <div class="grid">
-
-    <div class="card">
-      <div class="app-icon icon-logo"><img src="assets/noxreach-scheduler.svg" alt="NoxReach Scheduler"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="card-name">NoxReach Scheduler</div>
-          <span class="badge badge-dev">In Dev</span>
-        </div>
-        <div class="stack-tags">
-          <span class="stack-tag">Vercel</span>
-        </div>
-        <div class="card-desc">Social media scheduler — plan, create and publish posts across platforms. Future App Store release.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="app-icon icon-logo"><img src="assets/noxreach-motion.svg" alt="NoxReach Motion"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="card-name">NoxReach Motion</div>
-          <span class="badge badge-dev">In Dev</span>
-        </div>
-        <div class="stack-tags">
-          <span class="stack-tag">Remotion</span><span class="stack-tag">React</span><span class="stack-tag">Node.js</span>
-        </div>
-        <div class="card-desc">Programmatic video templates — renders MP4s from React components for NoxReach marketing content.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="app-icon icon-logo"><img src="assets/filterstay.png" alt="FilterStay"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="card-name">FilterStay</div>
-          <span class="badge badge-dev">In Dev</span>
-        </div>
-        <div class="stack-tags">
-          <span class="stack-tag">Expo</span><span class="stack-tag">React Native</span><span class="stack-tag">TypeScript</span>
-        </div>
-        <div class="card-desc">Hotel-filtering app — find and compare stays with advanced filters. Apple &amp; Google auth. App Store release planned.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="app-icon icon-logo"><img src="assets/groundwork.png" alt="Groundwork"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="card-name">Groundwork</div>
-          <span class="badge badge-dev">In Dev</span>
-        </div>
-        <div class="stack-tags">
-          <span class="stack-tag">Expo</span><span class="stack-tag">React Native</span><span class="stack-tag">Supabase</span>
-        </div>
-        <div class="card-desc">Fitness training app — workout tracking, recovery logging and check-ins. App Store release planned.</div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ══ CONCEPTS ══ -->
-  <div class="section-label">Concepts &amp; Explorations</div>
-  <div class="grid">
-
-    <div class="card">
-      <div class="app-icon icon-sky">🛫</div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="card-name">SkyCheck</div>
-          <span class="badge badge-concept">Concept</span>
-        </div>
-        <div class="card-desc">Aviation position check — verify crew positions and slot availability.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="app-icon icon-green">🗺</div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="card-name">LayoverAI</div>
-          <span class="badge badge-concept">Concept</span>
-        </div>
-        <div class="card-desc">AI-powered layover planner — personalised recommendations for what to do during your layover.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="app-icon icon-amber">🧳</div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="card-name">Packpilot</div>
-          <span class="badge badge-concept">Concept</span>
-        </div>
-        <div class="card-desc">Smart packing advisor — tells you exactly what to pack based on destination and trip type.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="app-icon icon-emerald">🍽</div>
-      <div class="card-body">
-        <div class="card-top">
-          <div class="card-name">Bitescan</div>
-          <span class="badge badge-concept">Concept</span>
-        </div>
-        <div class="card-desc">Food &amp; calorie tracker — scan meals and track nutrition effortlessly.</div>
-      </div>
-    </div>
-
+  <p class="audit-note">Portfolio inventory checked <span id="verified-on">—</span>. Development status and deployment health are tracked separately; unverified links are not presented as confirmed live.</p>
+  <div id="portfolio" aria-live="polite">
+    <p class="card-desc">Loading project registry…</p>
   </div>
 
   <footer>
@@ -548,6 +362,107 @@
   }
   const saved = localStorage.getItem('ra-theme');
   if (saved) document.documentElement.dataset.theme = saved;
+
+  const images = {
+    'NoxReach': 'assets/noxreach.svg',
+    'Standby Radar': 'assets/standby-radar.png',
+    'Sound of GEEZ': 'assets/geez.png',
+    'NoxReach Prompt Generator': 'assets/noxreach-prompt-gen.svg',
+    'NoxReach Scheduler': 'assets/noxreach-scheduler.svg',
+    'NoxReach Motion': 'assets/noxreach-motion.svg',
+    'FilterStay': 'assets/filterstay.png',
+    'Groundwork': 'assets/groundwork.png'
+  };
+  const icons = {
+    'SkyCheck': '🛫', 'LayoverAI': '🗺', 'Packpilot': '🧳',
+    'Bitescan': '🍽', 'FOUND': '📍', 'Flight Control': '✈',
+    'GEEZ Social': '📱', 'Big Brother GEEZ': '🏠', 'Order of the Keeper': '◈'
+  };
+  const groups = [
+    ['Live', p => p.development_status === 'Live' || p.development_status === 'Maintenance'],
+    ['In Development', p => p.development_status === 'Development' || p.development_status === 'Testing'],
+    ['Needs Verification', p => p.development_status === 'Unverified'],
+    ['Concepts & Explorations', p => p.development_status === 'Concept'],
+    ['Paused & Archived', p => p.development_status === 'Paused' || p.development_status === 'Archived']
+  ];
+
+  function node(tag, className, value) {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    if (value !== undefined) el.textContent = value;
+    return el;
+  }
+  function makeLink(label, href) {
+    const a = node('a', 'link-btn', label);
+    a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
+    return a;
+  }
+  function makeCard(p) {
+    const card = node('article', 'card');
+    const icon = node('div', 'app-icon' + (images[p.name] ? ' icon-logo' : ''));
+    if (images[p.name]) {
+      const img = document.createElement('img');
+      img.src = images[p.name]; img.alt = '';
+      icon.appendChild(img);
+    } else icon.textContent = icons[p.name] || '◆';
+    card.appendChild(icon);
+
+    const body = node('div', 'card-body');
+    const top = node('div', 'card-top');
+    top.appendChild(node('div', 'card-name', p.name));
+    const status = p.development_status || 'Unverified';
+    const badgeClass = status === 'Live' || status === 'Maintenance' ? 'badge-live' :
+      status === 'Development' || status === 'Testing' ? 'badge-dev' :
+      status === 'Concept' ? 'badge-concept' : 'badge-unknown';
+    top.appendChild(node('span', 'badge ' + badgeClass, status));
+    body.appendChild(top);
+    const tags = node('div', 'stack-tags');
+    (p.stack || '').split(' · ').filter(Boolean).forEach(t => tags.appendChild(node('span', 'stack-tag', t)));
+    body.appendChild(tags);
+    body.appendChild(node('p', 'card-desc', p.description));
+
+    const meta = node('div', 'project-meta');
+    const deployment = node('p', '', 'Deployment: ' + (p.deployment_status || 'Unknown'));
+    meta.appendChild(deployment);
+    const step = node('p');
+    step.appendChild(node('strong', '', 'Next: '));
+    step.appendChild(document.createTextNode(p.next_step || 'Not established'));
+    meta.appendChild(step);
+    meta.appendChild(node('p', '', 'Checked: ' + (p.last_verified || 'Not verified')));
+    if (p.blockers && p.blockers.length) meta.appendChild(node('p', '', 'Blocker: ' + p.blockers.join('; ')));
+    body.appendChild(meta);
+
+    const links = node('div', 'card-links');
+    if (p.repository) links.appendChild(makeLink('GitHub', p.repository));
+    if (p.production_url) links.appendChild(makeLink('Listed URL (unverified)', p.production_url));
+    body.appendChild(links);
+    card.appendChild(body);
+    return card;
+  }
+
+  async function loadProjects() {
+    const container = document.getElementById('portfolio');
+    try {
+      const res = await fetch('./projects.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const registry = await res.json();
+      if (!Array.isArray(registry.projects)) throw new Error('Invalid registry');
+      document.getElementById('verified-on').textContent = registry.verified_on || 'not established';
+      container.replaceChildren();
+      for (const [label, predicate] of groups) {
+        const projects = registry.projects.filter(predicate);
+        if (!projects.length) continue;
+        const heading = node('div', 'section-label', label + ' · ' + projects.length);
+        const grid = node('div', 'grid');
+        projects.forEach(project => grid.appendChild(makeCard(project)));
+        container.appendChild(heading);
+        container.appendChild(grid);
+      }
+    } catch (error) {
+      container.replaceChildren(node('p', 'audit-error', 'Project registry unavailable. Open this dashboard through its hosted site or a local web server. ' + error.message));
+    }
+  }
+  loadProjects();
 </script>
 
 </body>
