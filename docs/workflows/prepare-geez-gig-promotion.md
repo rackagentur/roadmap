@@ -170,5 +170,11 @@ A preparation-only GGD pilot was completed Sunday 15.11.2026. Its private DJ Clo
 record documents refreshed booking/queue evidence, exact asset matching, preserved
 publishing fields, manual Story handoffs and verification limits. This did not
 validate future publication or constitute full video/audio approval.
-**Next:** use [Review publishing status without duplicate posts](review-publishing-status.md)
-for a dedicated read-only campaign review. Automate only after the manual process works.
+The first live [read-only publishing-status review](review-publishing-status.md)
+was also completed on 15.11.2026; its private record retains the findings and
+preservation comparison. Publication verification and manual Story execution
+remain pending.
+**Next:** verify the existing Reel job and Instagram permalink after publication,
+then confirm the native Story handoff and record execution separately. Follow the
+[roadmap checkpoints](README.md#roadmap-checkpoints); assess automation only after
+the complete manual cycle is validated.
