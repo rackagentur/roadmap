@@ -48,9 +48,25 @@ does not install an integration, synchronize chats, or grant repository access.
   account identifiers, booking details, and private handoffs in their existing
   private homes. Never paste them into this index or public issues.
 
-Index source review: Sunday 15.11.2026. Linked documents were inspected during
-the operations audit; their procedures were not executed as part of this change.
-The gig-promotion playbook completed a preparation-only GGD pilot on Sunday
-15.11.2026; the private findings retain its evidence limits. The publishing-status
-review playbook is documented from those findings and awaits a dedicated live
-read-only review. No publication outcome or automation is implied by either milestone.
+## Roadmap checkpoints
+
+Checkpoint review: Sunday 15.11.2026. Based on the existing private DJ Clone
+preparation pilot and completed publishing-status review; this documentation
+update does not refresh live campaign evidence. Private records remain in DJ Clone.
+
+| Milestone | Verified checkpoint | Next action |
+| --- | --- | --- |
+| Prepare a GEEZ gig promotion | Complete: preparation-only GGD pilot on 15.11.2026, with evidence limits retained privately | Reuse the preparation package and existing jobs |
+| Review publishing status without duplicate posts | Complete: first live read-only GGD review on 15.11.2026; authored records matched before and after | Repeat the review against the same job after its scheduled publication |
+| Verify publication | Pending: the reviewed Reel was scheduled, with its outcome and Instagram permalink unverified | Inspect provider outcome and the matching Instagram post; retain uncertainty if inaccessible or delayed |
+| Complete manual Story handoff and execution | Pending: manual drafts are not proof of publication | After Reel verification, confirm the native Instagram handoff; record execution separately when observed or reported |
+| Assess selective automation | Deferred: the complete manual publishing cycle is not yet validated | After publication and manual execution are reviewed, decide whether a recurring check would save effort |
+
+**Next roadmap step:** verify the existing Reel's publication and Instagram
+permalink, then confirm its manual Story handoff. Keep exact job references,
+timing and execution evidence in the private campaign record. No replacement
+posts, new tracker or automation are implied by this checkpoint.
+
+Linked project procedures were inspected during the original operations audit;
+the completed GGD sessions above do not establish that every linked procedure
+has been executed or that all integrations are active.

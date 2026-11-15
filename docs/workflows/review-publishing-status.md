@@ -174,9 +174,17 @@ These are historical observations, not current campaign status. Private details
 remain in that project. Additional failure/partial-success cases above are
 procedure guidance, not claims that the GGD pilot observed them.
 
-This version has undergone document review and a retrospective walkthrough of
-the pilot; it has not yet been run as a complete live status-review session.
-**Next:** merge and verify this document, then run it read-only against the
-existing campaign. If its Reel has not yet published, report the current pending
-state and defer outcome verification. Once this manual process is validated,
-choose whether any recurring check merits automation; do not add one by default.
+PR #5 was merged and its deployment and workflow links verified on 15.11.2026.
+The first live read-only status-review session was completed that day against
+GGD. Its private DJ Clone record documents account-scoped queue/history coverage,
+evidence limits and identical authored records before and after inspection.
+The Reel was still scheduled; manual Stories remained drafts. This validates
+the initial read-only review, not future publication, manual execution or recovery
+from a publishing failure. This documentation update does not refresh those facts.
+
+**Next:** after the existing Reel's scheduled publication, inspect that same job
+and its Instagram permalink, then confirm the native Story handoff. Publication
+verification and manual Story execution remain pending until supported by their
+own evidence. Follow the [roadmap checkpoints](README.md#roadmap-checkpoints).
+Once the complete manual cycle is validated, decide whether any recurring check
+merits automation; do not add one by default.

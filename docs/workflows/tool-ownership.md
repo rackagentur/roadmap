@@ -90,6 +90,9 @@ existing jobs before changing the single publishing entry point.
 
 Use [Prepare a GEEZ gig promotion](prepare-geez-gig-promotion.md) for a promotion
 package and [Review publishing status without duplicate posts](review-publishing-status.md)
-for the subsequent read-only outcome check. The GGD preparation pilot is complete;
-the dedicated status-review session is next. Neither document authorizes publishing
-or changes the tool responsibilities above.
+for the subsequent read-only outcome check. The GGD preparation pilot and first
+live read-only status review are complete. Publication verification and manual
+Story execution remain pending. Next, verify the same Reel job and Instagram
+permalink after publication, then confirm the native Story handoff. See the
+[roadmap checkpoints](README.md#roadmap-checkpoints) for the recorded milestones.
+These checkpoints do not authorize publishing or change tool responsibilities.
