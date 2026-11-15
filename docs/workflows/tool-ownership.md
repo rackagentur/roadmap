@@ -88,7 +88,8 @@ existing jobs before changing the single publishing entry point.
 
 ## Next roadmap step
 
-Create the **Prepare a GEEZ gig promotion** playbook using this ownership map:
-verified booking brief → approved assets and copy → duplicate check → authorized
-publication → observed outcome. Include the separate native Story steps. The
-gig-promotion playbook is not implemented by this document.
+Use [Prepare a GEEZ gig promotion](prepare-geez-gig-promotion.md) for the next
+read-only preparation pilot on a confirmed gig: verified booking brief → approved
+assets and copy → duplicate check → authorized publication → observed outcome.
+The playbook includes separate native Story steps; creating it does not authorize
+executing its publishing actions.
