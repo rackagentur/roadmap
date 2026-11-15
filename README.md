@@ -4,6 +4,17 @@ The GitHub Pages dashboard lives in `index.html`. Project data is managed in
 `projects.json` rather than hardcoded HTML. Existing radar visuals, cards,
 theme toggle and responsive layout remain in place.
 
+## Using the operations hub
+
+Start with the [workflow library](docs/workflows/README.md) when you need a
+process, or [Resume a project](docs/workflows/resume-a-project.md) when returning
+to work. The dashboard links to both. Playbooks are version-controlled Markdown;
+existing project procedures remain in their owning repositories. The library
+includes a ready-to-copy ChatGPT prompt for retrieving the same sources.
+
+This is a public navigation layer, not a private task or booking database.
+Keep personal handoffs and operational records in their existing private homes.
+
 ## Updating the portfolio
 
 1. Check the actual `rackagentur` repositories, README files, milestones,
