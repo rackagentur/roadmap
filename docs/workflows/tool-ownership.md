@@ -88,8 +88,8 @@ existing jobs before changing the single publishing entry point.
 
 ## Next roadmap step
 
-Use [Prepare a GEEZ gig promotion](prepare-geez-gig-promotion.md) for the next
-read-only preparation pilot on a confirmed gig: verified booking brief → approved
-assets and copy → duplicate check → authorized publication → observed outcome.
-The playbook includes separate native Story steps; creating it does not authorize
-executing its publishing actions.
+Use [Prepare a GEEZ gig promotion](prepare-geez-gig-promotion.md) for a promotion
+package and [Review publishing status without duplicate posts](review-publishing-status.md)
+for the subsequent read-only outcome check. The GGD preparation pilot is complete;
+the dedicated status-review session is next. Neither document authorizes publishing
+or changes the tool responsibilities above.

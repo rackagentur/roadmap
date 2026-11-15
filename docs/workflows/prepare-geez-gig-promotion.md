@@ -166,9 +166,9 @@ available DJ Clone strategy, approved GEEZ editing instructions and the private
 GEEZ content review retained in DJ Clone. Those sources are references, not a
 fresh verification of any event, media file, queue item or platform capability.
 
-This first version is structurally reviewed, not yet validated on a real gig.
-**Next:** run a read-only preparation pilot on one confirmed gig, preserve its
-existing publication jobs, and record gaps in the existing private project chat.
-Then extract the reusable “Review publishing status without duplicate posts”
-playbook from the proven queue-check and recovery steps. Automate only after
-the manual process works.
+A preparation-only GGD pilot was completed Sunday 15.11.2026. Its private DJ Clone
+record documents refreshed booking/queue evidence, exact asset matching, preserved
+publishing fields, manual Story handoffs and verification limits. This did not
+validate future publication or constitute full video/audio approval.
+**Next:** use [Review publishing status without duplicate posts](review-publishing-status.md)
+for a dedicated read-only campaign review. Automate only after the manual process works.

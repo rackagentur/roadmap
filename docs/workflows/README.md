@@ -8,6 +8,7 @@ directory; this index points to reusable procedures and their owning sources.
 | Pick up a project again | [Resume a project](resume-a-project.md) | Returning after a break, changing tools, or handing work to another chat |
 | Choose the right booking or publishing tool | [Tool ownership](tool-ownership.md) | Before preparing promotion, updating booking facts, or scheduling content |
 | Prepare promotion for a confirmed gig | [Prepare a GEEZ gig promotion](prepare-geez-gig-promotion.md) | A gig is confirmed, its details change, or its promotion window opens |
+| Check publication without duplicating posts | [Review publishing status without duplicate posts](review-publishing-status.md) | A campaign needs a status check, a job is due, or a publishing outcome is unclear |
 | Update the dashboard | [Portfolio maintenance](../../README.md#updating-the-portfolio) | A project, verified status, or next action changes |
 | Check NoxReach booking intake | [Existing NoxReach runbook](https://github.com/rackagentur/NoxReach/blob/main/tasks/inbound-production-runbook.md) · private | An intake or notification problem needs investigation |
 | Resume FOUND development | [Existing FOUND state](https://github.com/rackagentur/found-app/blob/main/tasks/state.md) · private | Establishing the current milestone and remaining gates |
@@ -49,5 +50,7 @@ does not install an integration, synchronize chats, or grant repository access.
 
 Index source review: Sunday 15.11.2026. Linked documents were inspected during
 the operations audit; their procedures were not executed as part of this change.
-The gig-promotion playbook is documented and awaits a real-gig preparation pilot.
-A separate publishing-status review playbook remains future work.
+The gig-promotion playbook completed a preparation-only GGD pilot on Sunday
+15.11.2026; the private findings retain its evidence limits. The publishing-status
+review playbook is documented from those findings and awaits a dedicated live
+read-only review. No publication outcome or automation is implied by either milestone.
