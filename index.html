@@ -297,6 +297,13 @@
     .badge-unknown { background: var(--surface2); color: var(--text-muted); border: 1px solid var(--border); }
     .audit-error { color: var(--badge-dev-text); font-size: 13px; margin-bottom: 30px; }
 
+    .workflow-start { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; margin-bottom: 32px; }
+    .workflow-start h2 { font-size: 18px; margin-bottom: 9px; }
+    .workflow-start p { color: var(--text-muted); font-size: 14px; line-height: 1.6; max-width: 65ch; }
+    .workflow-start nav { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+    .workflow-start a { display: inline-block; color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; font-size: 14px; text-underline-offset: 3px; }
+    .workflow-start a:hover { border-color: var(--accent); }
+
     /* ── Footer ── */
     footer {
       text-align: center;
@@ -352,6 +359,14 @@
 
   <main>
   <p class="audit-note">Portfolio inventory checked <span id="verified-on">—</span>. Development status and deployment health are tracked separately; unverified links are not presented as confirmed live.</p>
+  <section class="workflow-start" aria-labelledby="workflow-title">
+    <h2 id="workflow-title">Pick up where you left off</h2>
+    <p>Find your last verified checkpoint, the right instructions, and one clear next step. Open a playbook or use its ready-to-copy prompt in your project chat.</p>
+    <nav aria-label="Workflow library">
+      <a href="https://github.com/rackagentur/roadmap/blob/main/docs/workflows/resume-a-project.md">Resume a project</a>
+      <a href="https://github.com/rackagentur/roadmap/blob/main/docs/workflows/README.md">Browse workflows</a>
+    </nav>
+  </section>
   <div id="portfolio" aria-live="polite">
     <p class="card-desc">Loading project registry…</p>
   </div>
