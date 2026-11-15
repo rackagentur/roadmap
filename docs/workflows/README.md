@@ -6,6 +6,7 @@ directory; this index points to reusable procedures and their owning sources.
 | I want to… | Start here | When to use it |
 | --- | --- | --- |
 | Pick up a project again | [Resume a project](resume-a-project.md) | Returning after a break, changing tools, or handing work to another chat |
+| Choose the right booking or publishing tool | [Tool ownership](tool-ownership.md) | Before preparing promotion, updating booking facts, or scheduling content |
 | Update the dashboard | [Portfolio maintenance](../../README.md#updating-the-portfolio) | A project, verified status, or next action changes |
 | Check NoxReach booking intake | [Existing NoxReach runbook](https://github.com/rackagentur/NoxReach/blob/main/tasks/inbound-production-runbook.md) · private | An intake or notification problem needs investigation |
 | Resume FOUND development | [Existing FOUND state](https://github.com/rackagentur/found-app/blob/main/tasks/state.md) · private | Establishing the current milestone and remaining gates |
