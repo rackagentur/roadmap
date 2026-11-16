@@ -41,8 +41,8 @@
       "deployment_status": "Verified live",
       "production_url": "https://soundofgeez.com",
       "stack": "HTML · CSS · JavaScript",
-      "next_step": "Add 19 Dec Heavenue to tour page or confirm it is intentionally unlisted",
-      "evidence": "2026-11-16 check: soundofgeez.com redirects to www (Vercel), homepage renders without console errors; all 10 nav/legal pages and GeezEPK.pdf return 200; Book GEEZ uses mailto:info@soundofgeez.com; contact form posts to Formspree (not submitted). Tour page lists 27 Nov, 28 Nov, 6 Feb but not the 19 Dec gig shown in NoxReach.",
+      "next_step": "Heavenue 19 Dec listing fixed; monitor scheduled tour-date sync",
+      "evidence": "2026-11-16 check: soundofgeez.com redirects to www (Vercel), homepage renders without console errors; all 10 nav/legal pages and GeezEPK.pdf return 200; Book GEEZ uses mailto:info@soundofgeez.com; contact form posts to Formspree (not submitted). Resolved 2026-11-16: fresh tour sync imported all 4 upcoming gigs, including Heavenue on 19 Dec 2026 in Cologne; confirmed in live HTML and browser at https://www.soundofgeez.com/tour.html. Sync: https://github.com/rackagentur/geez/actions/runs/43871367540; published commit bce907ce9e7771774a9f93e21d883362e760dcc1.",
       "last_verified": "2026-11-16",
       "blockers": []
     },
