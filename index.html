@@ -470,7 +470,10 @@
 
     const links = node('div', 'card-links');
     if (p.repository) links.appendChild(makeLink('GitHub', p.repository, p.name));
-    if (p.production_url) links.appendChild(makeLink('Listed URL (unverified)', p.production_url, p.name));
+    if (p.production_url) {
+      const verified = p.deployment_status === 'Verified live';
+      links.appendChild(makeLink(verified ? 'Live site (verified)' : 'Listed URL (unverified)', p.production_url, p.name));
+    }
     body.appendChild(links);
     card.appendChild(body);
     return card;

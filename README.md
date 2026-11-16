@@ -45,8 +45,9 @@ deployment health automatically.
 
 URLs in `production_url` are **listed addresses** until deployment
 verification is recorded; the dashboard labels them as unverified.
-For confirmed live deployments, update the display policy in
-`index.html` as part of that verification change.
+Only records with `deployment_status: "Verified live"` get a
+"Live site (verified)" link label (the date shows as "Checked"); every other status,
+including "Reachable; defects found", keeps "Listed URL (unverified)".
 
 `last_verified` is the date of the specific source review. The
 `evidence` field records what supports a classification. Do not infer
