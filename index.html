@@ -215,6 +215,7 @@
     /* Real logo icons — no gradient, no font-size needed */
     .icon-logo { background: none; box-shadow: none; padding: 0; overflow: hidden; }
     .icon-logo-contrast { background: #111118; }
+    .icon-monogram { font-size: 17px; font-weight: 700; letter-spacing: 0.02em; color: #fff; }
     .icon-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 14px; display: block; }
 
     /* ── Card body ── */
@@ -303,12 +304,21 @@
     .workflow-start nav { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
     .workflow-start a { display: inline-block; color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; font-size: 14px; text-underline-offset: 3px; }
     .workflow-start a:hover { border-color: var(--accent); }
-    .milestone { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; margin-bottom: 32px; }
-    .milestone-top { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 9px; }
+    .milestone { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 32px; }
+    .milestone-summary { list-style: none; cursor: pointer; padding: 18px 22px; border-radius: 14px; }
+    .milestone-summary::-webkit-details-marker { display: none; }
+    .milestone-summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .milestone-summary:hover { border-color: var(--accent); }
+    .milestone-top { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
     .milestone h2 { font-size: 18px; }
     .milestone .kicker { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
-    .milestone > p { color: var(--text-muted); font-size: 14px; line-height: 1.6; max-width: 65ch; }
-    .milestone > .project-meta { margin: 14px 0 18px; font-size: 13px; }
+    .milestone-facts { color: var(--text-muted); font-size: 13px; line-height: 1.5; margin-top: 8px; }
+    .milestone-toggle { margin-left: auto; font-size: 13px; color: var(--text-muted); white-space: nowrap; }
+    .milestone-toggle::before { content: 'Show details ▾'; }
+    .milestone[open] .milestone-toggle::before { content: 'Hide details ▴'; }
+    .milestone-body { padding: 0 22px 22px; }
+    .milestone-objective { color: var(--text-muted); font-size: 14px; line-height: 1.6; max-width: 65ch; }
+    .milestone-body > .project-meta { margin: 14px 0 18px; font-size: 13px; }
     .milestone h3.section-label { margin-top: 22px; }
     .phase-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
     .phase-list li { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 14px; }
@@ -408,21 +418,24 @@
   } catch {}
   updateThemeLabel();
 
+  // Verified project icons only (each taken from the project's own repository or an earlier
+  // dashboard upload of its branding). Paths are relative, so they work under /roadmap/.
   const images = {
     'NoxReach': 'assets/noxreach.svg',
     'Standby Radar': 'assets/standby-radar.png',
     'Sound of GEEZ': 'assets/geez.png',
-    'NoxReach Prompt Generator': 'assets/noxreach-prompt-gen.svg',
-    'NoxReach Scheduler': 'assets/noxreach-scheduler.svg',
-    'NoxReach Motion': 'assets/noxreach-motion.svg',
+    'NoxReach Motion': 'assets/noxreach-motion.svg',   // NoxReach mark, as used in that repo (public/nr-icon.svg)
     'FilterStay': 'assets/filterstay.png',
-    'Groundwork': 'assets/groundwork.png'
+    'Groundwork': 'assets/groundwork.png',
+    'Flight Control': 'assets/flight-control.png'       // flight-control repo: assets/icons/icon-192.png
   };
-  const icons = {
-    'SkyCheck': '🛫', 'LayoverAI': '🗺', 'Packpilot': '🧳',
-    'Bitescan': '🍽', 'FOUND': '📍', 'Flight Control': '✈',
-    'GEEZ Social': '📱', 'Big Brother GEEZ': '🏠', 'Order of the Keeper': '◈'
-  };
+  // Everything else gets the same monogram fallback (no emoji, no borrowed logos).
+  function monogram(name) {
+    const words = name.split(/\s+/).filter(w => !/^(of|the|and)$/i.test(w));
+    if (words.length > 1) return (words[0][0] + words[1][0]).toUpperCase();
+    const caps = name.match(/[A-Z]/g) || [];
+    return caps.length > 1 && caps.length < name.length ? (caps[0] + caps[1]) : name[0].toUpperCase();
+  }
   const groups = [
     ['Live', p => p.development_status === 'Live' || p.development_status === 'Maintenance'],
     ['In Development', p => p.development_status === 'Development' || p.development_status === 'Testing'],
@@ -445,14 +458,18 @@
   }
   function makeCard(p) {
     const card = node('article', 'card');
-    const icon = node('div', 'app-icon' + (images[p.name] ? ' icon-logo' : ''));
+    const icon = node('div', 'app-icon');
     icon.setAttribute('aria-hidden', 'true');
-    if (p.name === 'Sound of GEEZ') icon.classList.add('icon-logo-contrast');
+    const fallback = () => { icon.className = 'app-icon icon-monogram'; icon.replaceChildren(document.createTextNode(monogram(p.name))); };
     if (images[p.name]) {
+      icon.classList.add('icon-logo');
+      if (p.name === 'Sound of GEEZ') icon.classList.add('icon-logo-contrast');
       const img = document.createElement('img');
-      img.src = images[p.name]; img.alt = '';
+      img.alt = ''; img.width = 52; img.height = 52; img.decoding = 'async';
+      img.addEventListener('error', fallback, { once: true }); // broken asset → same fallback as unmapped projects
+      img.src = images[p.name];
       icon.appendChild(img);
-    } else icon.textContent = icons[p.name] || '◆';
+    } else fallback();
     card.appendChild(icon);
 
     const body = node('div', 'card-body');
@@ -494,16 +511,23 @@
   // Strategic milestones (e.g. App Store Preparation & Launch). Readiness is shown exactly as
   // recorded — "Not audited" until an audit exists; no percentages or scores are derived.
   function makeMilestone(m) {
-    const sec = node('section', 'milestone');
-    sec.setAttribute('aria-labelledby', 'ms-' + m.id);
-    sec.appendChild(node('p', 'kicker', 'Strategic milestone'));
+    // Native disclosure: <summary> is focusable and toggles with Enter/Space; collapsed by default.
+    const sec = node('details', 'milestone');
+    const sum = node('summary', 'milestone-summary');
+    sum.appendChild(node('p', 'kicker', 'Strategic milestone'));
     const top = node('div', 'milestone-top');
     const h = node('h2', '', m.title); h.id = 'ms-' + m.id;
     top.appendChild(h);
-    top.appendChild(node('span', 'badge badge-unknown', m.status || 'Unverified'));
-    sec.appendChild(top);
-    sec.appendChild(node('p', '', m.objective));
+    top.appendChild(node('span', 'badge badge-unknown', 'Status: ' + (m.status || 'Unverified')));
+    top.appendChild(node('span', 'milestone-toggle', ''));
+    sum.appendChild(top);
+    const phaseLabel = (m.current_phase || 'Not established').replace(/^Phase \d+\s*—\s*/, '');
+    sum.appendChild(node('p', 'milestone-facts',
+      'Current phase: ' + phaseLabel + ' · ' + (m.applications || []).length + ' candidate applications · ' + (m.phases || []).length + ' roadmap phases'));
+    sec.appendChild(sum);
 
+    const body = node('div', 'milestone-body');
+    body.appendChild(node('p', 'milestone-objective', m.objective));
     const meta = node('div', 'project-meta');
     meta.appendChild(node('p', '', 'Current phase: ' + (m.current_phase || 'Not established')));
     meta.appendChild(node('p', '', 'Apple Developer enrollment: ' + (m.enrollment_status || 'Not established')));
@@ -513,9 +537,9 @@
     meta.appendChild(step);
     if (m.blockers && m.blockers.length) meta.appendChild(node('p', '', 'Known blockers: ' + m.blockers.join('; ')));
     meta.appendChild(node('p', '', 'Recorded: ' + (m.recorded_on || '—')));
-    sec.appendChild(meta);
+    body.appendChild(meta);
 
-    sec.appendChild(node('h3', 'section-label', 'Phases · ' + (m.phases || []).length));
+    body.appendChild(node('h3', 'section-label', 'Phases · ' + (m.phases || []).length));
     const phases = node('ol', 'phase-list');
     (m.phases || []).forEach(ph => {
       const li = node('li');
@@ -525,26 +549,27 @@
       if (detail) li.appendChild(node('span', 'phase-detail', detail));
       phases.appendChild(li);
     });
-    sec.appendChild(phases);
+    body.appendChild(phases);
 
-    sec.appendChild(node('h3', 'section-label', 'Applications in scope · ' + (m.applications || []).length));
+    body.appendChild(node('h3', 'section-label', 'Applications in scope · ' + (m.applications || []).length));
     const grid = node('div', 'grid');
     (m.applications || []).forEach(a => {
       const card = node('article', 'card');
-      const body = node('div', 'card-body');
+      const cb = node('div', 'card-body');
       const t = node('div', 'card-top');
       t.appendChild(node('h3', 'card-name', a.name));
       t.appendChild(node('span', 'badge badge-unknown', 'Readiness: ' + (a.readiness || 'Not audited')));
-      body.appendChild(t);
-      body.appendChild(node('p', 'card-desc', a.current_state));
+      cb.appendChild(t);
+      cb.appendChild(node('p', 'card-desc', a.current_state));
       const am = node('div', 'project-meta');
       if (a.estimate) am.appendChild(node('p', '', a.estimate));
       am.appendChild(node('p', '', 'Blocker: ' + (a.blockers && a.blockers.length ? a.blockers.join('; ') : 'Not audited')));
-      body.appendChild(am);
-      card.appendChild(body);
+      cb.appendChild(am);
+      card.appendChild(cb);
       grid.appendChild(card);
     });
-    sec.appendChild(grid);
+    body.appendChild(grid);
+    sec.appendChild(body);
     return sec;
   }
 
