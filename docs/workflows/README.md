@@ -70,3 +70,29 @@ posts, new tracker or automation are implied by this checkpoint.
 Linked project procedures were inspected during the original operations audit;
 the completed GGD sessions above do not establish that every linked procedure
 has been executed or that all integrations are active.
+
+### App Store Preparation & Launch
+
+Recorded: Wednesday 18.11.2026. Strategic milestone: prepare several apps for
+native iOS distribution **before** enrolling in the Apple Developer Program, so
+they can be submitted within the same general launch window. No deadlines are
+set. Dashboard data: the `milestones` entry in [`projects.json`](../../projects.json).
+
+| Phase | Status | Scope |
+| --- | --- | --- |
+| 1 — App Store Readiness Audit | Planned (current) | Inspect each app's implementation, native iOS compatibility, actual App Store requirements and blockers; estimate effort; decide which apps justify publication |
+| 2 — Native iOS Preparation | Planned | Prepare approved apps; reuse existing code; keep existing web deployments; only necessary native functionality |
+| 3 — Device Testing | Planned | Native builds on iPhone; functionality, offline behaviour, data persistence, backup/migration; fix genuine release blockers |
+| 4 — Apple Developer Enrollment | Deferred | Trigger: most selected apps are technically ready for submission. Not initiated automatically |
+| 5 — App Store Submission | Planned | Metadata, screenshots and icons, privacy disclosures, App Store Connect, independent review submissions |
+
+| Application | Readiness | Recorded state |
+| --- | --- | --- |
+| GEEZ FIT | Not audited | Production PWA deployed; exercise demonstrations and appearance selector implemented; latest reported tests 111 passing; native iOS preparation estimated at 3–7 working days (unaudited) |
+| NoxReach | Not audited | Existing DJ booking/follow-up app; native iOS readiness unverified |
+| Flight Control | Not audited | Existing flight-attendant app; native iOS readiness unverified |
+| Placeback | Not audited | Existing review app project; implementation and iOS readiness unverified |
+
+**Next action:** Conduct App Store readiness audits for the four candidate
+applications. This entry does not start the audits, native development or
+Developer Program enrollment.

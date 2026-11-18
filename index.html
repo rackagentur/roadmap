@@ -303,6 +303,17 @@
     .workflow-start nav { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
     .workflow-start a { display: inline-block; color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; font-size: 14px; text-underline-offset: 3px; }
     .workflow-start a:hover { border-color: var(--accent); }
+    .milestone { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; margin-bottom: 32px; }
+    .milestone-top { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 9px; }
+    .milestone h2 { font-size: 18px; }
+    .milestone .kicker { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+    .milestone > p { color: var(--text-muted); font-size: 14px; line-height: 1.6; max-width: 65ch; }
+    .milestone > .project-meta { margin: 14px 0 18px; font-size: 13px; }
+    .milestone h3.section-label { margin-top: 22px; }
+    .phase-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+    .phase-list li { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 14px; }
+    .phase-list .phase-detail { flex-basis: 100%; color: var(--text-muted); font-size: 13px; line-height: 1.5; }
+    .milestone .grid { margin-top: 0; }
 
     /* ── Footer ── */
     footer {
@@ -367,6 +378,7 @@
       <a href="https://github.com/rackagentur/roadmap/blob/main/docs/workflows/README.md">Browse workflows</a>
     </nav>
   </section>
+  <div id="milestones" aria-live="polite"></div>
   <div id="portfolio" aria-live="polite">
     <p class="card-desc">Loading project registry…</p>
   </div>
@@ -479,6 +491,63 @@
     return card;
   }
 
+  // Strategic milestones (e.g. App Store Preparation & Launch). Readiness is shown exactly as
+  // recorded — "Not audited" until an audit exists; no percentages or scores are derived.
+  function makeMilestone(m) {
+    const sec = node('section', 'milestone');
+    sec.setAttribute('aria-labelledby', 'ms-' + m.id);
+    sec.appendChild(node('p', 'kicker', 'Strategic milestone'));
+    const top = node('div', 'milestone-top');
+    const h = node('h2', '', m.title); h.id = 'ms-' + m.id;
+    top.appendChild(h);
+    top.appendChild(node('span', 'badge badge-unknown', m.status || 'Unverified'));
+    sec.appendChild(top);
+    sec.appendChild(node('p', '', m.objective));
+
+    const meta = node('div', 'project-meta');
+    meta.appendChild(node('p', '', 'Current phase: ' + (m.current_phase || 'Not established')));
+    meta.appendChild(node('p', '', 'Apple Developer enrollment: ' + (m.enrollment_status || 'Not established')));
+    const step = node('p');
+    step.appendChild(node('strong', '', 'Next: '));
+    step.appendChild(document.createTextNode(m.next_step || 'Not established'));
+    meta.appendChild(step);
+    if (m.blockers && m.blockers.length) meta.appendChild(node('p', '', 'Known blockers: ' + m.blockers.join('; ')));
+    meta.appendChild(node('p', '', 'Recorded: ' + (m.recorded_on || '—')));
+    sec.appendChild(meta);
+
+    sec.appendChild(node('h3', 'section-label', 'Phases · ' + (m.phases || []).length));
+    const phases = node('ol', 'phase-list');
+    (m.phases || []).forEach(ph => {
+      const li = node('li');
+      li.appendChild(node('span', 'badge badge-unknown', ph.status));
+      li.appendChild(node('strong', '', ph.name));
+      const detail = (ph.trigger ? 'Trigger: ' + ph.trigger + ' ' : '') + (ph.items || []).join(' · ');
+      if (detail) li.appendChild(node('span', 'phase-detail', detail));
+      phases.appendChild(li);
+    });
+    sec.appendChild(phases);
+
+    sec.appendChild(node('h3', 'section-label', 'Applications in scope · ' + (m.applications || []).length));
+    const grid = node('div', 'grid');
+    (m.applications || []).forEach(a => {
+      const card = node('article', 'card');
+      const body = node('div', 'card-body');
+      const t = node('div', 'card-top');
+      t.appendChild(node('h3', 'card-name', a.name));
+      t.appendChild(node('span', 'badge badge-unknown', 'Readiness: ' + (a.readiness || 'Not audited')));
+      body.appendChild(t);
+      body.appendChild(node('p', 'card-desc', a.current_state));
+      const am = node('div', 'project-meta');
+      if (a.estimate) am.appendChild(node('p', '', a.estimate));
+      am.appendChild(node('p', '', 'Blocker: ' + (a.blockers && a.blockers.length ? a.blockers.join('; ') : 'Not audited')));
+      body.appendChild(am);
+      card.appendChild(body);
+      grid.appendChild(card);
+    });
+    sec.appendChild(grid);
+    return sec;
+  }
+
   async function loadProjects() {
     const container = document.getElementById('portfolio');
     try {
@@ -487,6 +556,8 @@
       const registry = await res.json();
       if (!Array.isArray(registry.projects)) throw new Error('Invalid registry');
       document.getElementById('verified-on').textContent = registry.verified_on || 'not established';
+      const ms = document.getElementById('milestones');
+      ms.replaceChildren(...(Array.isArray(registry.milestones) ? registry.milestones.map(makeMilestone) : []));
       container.replaceChildren();
       for (const [label, predicate] of groups) {
         const projects = registry.projects.filter(predicate);
