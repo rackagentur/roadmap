@@ -232,5 +232,102 @@
       "last_verified": "2026-11-13",
       "blockers": []
     }
+  ],
+  "milestones": [
+    {
+      "id": "app-store-launch",
+      "title": "App Store Preparation & Launch",
+      "objective": "Prepare multiple applications for native iOS distribution before enrolling in the Apple Developer Program, so several apps can be submitted within the same general launch window.",
+      "status": "Planned",
+      "current_phase": "Phase 1 — App Store Readiness Audit",
+      "enrollment_status": "Deferred — not started. Enrol only when most selected applications are technically ready for submission.",
+      "next_step": "Conduct App Store readiness audits for the four candidate applications.",
+      "blockers": [
+        "No candidate application has been audited against App Store requirements yet."
+      ],
+      "recorded_on": "2026-11-18",
+      "phases": [
+        {
+          "name": "Phase 1 — App Store Readiness Audit",
+          "status": "Planned",
+          "items": [
+            "Inspect each application's current implementation",
+            "Determine native iOS compatibility",
+            "Identify actual App Store requirements and blockers",
+            "Estimate development effort for each application",
+            "Decide which applications justify publication"
+          ]
+        },
+        {
+          "name": "Phase 2 — Native iOS Preparation",
+          "status": "Planned",
+          "items": [
+            "Prepare approved applications for iOS",
+            "Reuse existing application code where practical",
+            "Preserve existing web deployments",
+            "Implement only necessary native functionality"
+          ]
+        },
+        {
+          "name": "Phase 3 — Device Testing",
+          "status": "Planned",
+          "items": [
+            "Test native builds on iPhone",
+            "Verify functionality, offline behaviour and data persistence",
+            "Validate backup and migration where applicable",
+            "Resolve genuine release blockers"
+          ]
+        },
+        {
+          "name": "Phase 4 — Apple Developer Enrollment",
+          "status": "Deferred",
+          "trigger": "Most selected applications are technically ready for submission.",
+          "items": [
+            "Not initiated automatically"
+          ]
+        },
+        {
+          "name": "Phase 5 — App Store Submission",
+          "status": "Planned",
+          "items": [
+            "Prepare App Store metadata",
+            "Prepare screenshots and icons",
+            "Complete privacy disclosures",
+            "Configure App Store Connect",
+            "Submit applications independently for review"
+          ]
+        }
+      ],
+      "applications": [
+        {
+          "name": "GEEZ FIT",
+          "readiness": "Not audited",
+          "current_state": "Production PWA deployed. Exercise demonstrations and appearance selector implemented. Latest reported automated tests: 111 passing.",
+          "estimate": "Native iOS preparation estimated at 3–7 working days (unaudited estimate).",
+          "blockers": []
+        },
+        {
+          "name": "NoxReach",
+          "readiness": "Not audited",
+          "current_state": "Existing DJ booking and follow-up application. Native iOS readiness unverified.",
+          "estimate": null,
+          "blockers": []
+        },
+        {
+          "name": "Flight Control",
+          "readiness": "Not audited",
+          "current_state": "Existing flight-attendant application. Native iOS readiness unverified.",
+          "estimate": null,
+          "blockers": []
+        },
+        {
+          "name": "Placeback",
+          "readiness": "Not audited",
+          "current_state": "Existing review application project. Current implementation and iOS readiness unverified.",
+          "estimate": null,
+          "blockers": []
+        }
+      ]
+    }
   ]
 }
